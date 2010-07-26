@@ -1,0 +1,25 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           acPage
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          ac_page
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        title:      Pagine
+        display:    [ internal_name, _menu ]
+      filter:  ~
+      form:    ~
+      edit:
+        title:      Modifica pagina
+      new:
+        title:      Nuova pagina

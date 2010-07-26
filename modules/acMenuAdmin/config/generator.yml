@@ -1,0 +1,44 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           acMenu
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          ac_menu
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+
+      list:
+        title:         Menù
+        max_per_page:  99999
+        table_method:  getQueryForAdmin
+        actions: []
+        batch_actions: []
+        object_actions:  # queste non valgono, per modificare le azioni cambiare il template _list_td_actions.php 
+          _edit:        { label: modifica menù }
+          editPage:     { label: modifica pagina }
+          moveUp:       { label: su }
+          moveDown:     { label: giù }
+          addChildren:  { label: sottomenu }
+          _delete:      { label: elimina, confirm: 'Sicuro di voler eliminare questo menù e tutti i suoi menù figli?\n(le pagine collegate non verranno eliminate)\nL''operazione non potrà essere annullata!' }
+
+
+      filter:
+        class: false
+
+      form:    ~
+      edit:
+        title:   Modifica menù
+      new:
+        title:   Nuovo menù
+        actions:
+          _list: ~
+          _save: ~
+          _save_and_list: ~

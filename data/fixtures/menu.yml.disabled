@@ -1,0 +1,87 @@
+acMenu:
+  menu_princpale:
+    tree_name: principale
+    children:
+      menu_home:
+        route: @homepage
+        Translation:
+          it: 
+            name:  home
+            title: ANDOS Onlus Nazionale
+          en: 
+            name:  home
+            title: ANDOS Onlus Nazionale
+      menu_chi_siamo:
+        Translation:
+          it:
+            name:  Chi siamo
+          en:
+            name: Who we are
+        children:
+          menu_chi_siamo_storia:
+            Translation:
+              it:
+                name: Storia
+                title: storia della A.N.D.O.S. Onlus Nazionale
+              en:
+                name: History
+                title: History of italian A.N.D.O.S. Onlus Nazionale
+            Page:
+              internal_name: chi_siamo_storia
+              Translation:
+                it:
+                  title:       Storia dell'A.N.D.O.S. Onlus nazionale
+                  description: dal 1976 un'aiuto concreto per le donne operate al seno
+                  keywords:    andos, onlus, storia, donne operate al seno
+                  content:     A.N.D.O.S. onlus nasce, come Centro Riabilitazione Mastectomizzate, nel 1976 da un’intuizione della Signora Luisa Nemez suffragata dal Prof. Piero Pietri , per offrire alle donne operate al seno un’assistenza specifica più ampia e più attenta per aiutarle a superare i molti traumi legati a questa patologia.
+          menu_chi_siamo_servizi:
+            Translation:
+              it:
+                name:   Servizi
+                title:  Servizi offerti dalla A.N.D.O.S. Onlus Nazionale
+              en:
+                name:   Services
+                title:  Services offered by A.N.D.O.S. Onlus Nazionale
+            Page:
+              internal_name: chi_siamo_servizi
+              Translation:
+                it:
+                  title:  Servizi
+                  content: "QUALI SERVIZI OFFRIAMO: bla bla bla"   
+          menu_direttivo:
+            Translation:
+              it:
+                name:   Direttivo
+                title:  Direttivo A.N.D.O.S. Onlus Nazionale
+              en:
+                name:   Leadership
+                title:  Leadership A.N.D.O.S. Onlus Nazionale
+            Page:
+              internal_name: chi_siamo_direttivo
+              Translation:
+                it:
+                  title:  Direttivo
+                  content: "Presidente	prof. Francesco Maria Fazio"   
+                en:
+                  title:  Leadership
+                  content: "President	prof. Francesco Maria Fazio"   
+
+  menu_secondario:
+    tree_name: secondario
+    children:
+      menu_privacy:
+        Translation:
+          it:
+            name:  privacy
+            title: Informativa sulla privacy - ANDOS Onlus Nazionale
+          en:
+            name:  privacy
+            title: Privacy information - ANDOS Onlus Nazionale
+        Page:
+          internal_name: privacy
+          Translation:
+            it:
+              title:       Informativa al trattamento dei dati personali
+              description: 
+              keywords:    privacy, andos onlus nazionale
+              content:     bla bla bla privacy

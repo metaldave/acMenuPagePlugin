@@ -1,0 +1,6 @@
+_showMenu:
+  enabled: true
+_breadcrumb:
+  enabled: true 
+_changeLanguage:
+  enabled: true

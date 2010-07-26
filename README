@@ -1,0 +1,89 @@
+# acMenuPage plugin (for symfony 1.4) #
+
+## Routing ##
+
+Tutte le regole di routing devono avere la sf_culture come primo parametro, la homepage può essere:
+
+		homepage:
+		  url:   /:sf_culture
+		  param: { module: home, action: index, sf_culture: it }
+		  requirements:
+		    sf_culture: (?:it|en)
+		    
+Le azioni symfony possono essere collegate ad un menu, le regole di routing collegabili sono definite nel file app.yml
+tramite il vettore "routes", l'indice di questo vettore è il nome della regola di routing (compresa la @) e il valore 
+è una stringa descrittiva utilizzata solo nel backend
+
+	* nel file app.yml
+	
+		routes:
+		  @homepage:     homepage
+		  @ac_news:      pagina delle news
+		  @where:        pagina dove siamo
+		  @ac_contacts:  pagina dei contatti
+		  @products:     pagina prodotti
+
+Nelle pagine (risultato di azioni symfony) che non vengono collegate a nessun menù non sarà possibile visualizzare il 
+breadcrumb, il cambio della lingua ed evidenziare il menu selezionato.
+
+	* Per ovviare a questo inconveniente è possibile visualizzare tali pagine via ajax, lo script ajax.js suppone 
+	  che il contenuto della pagina sia dentro ad un div con id="content" e trasforma tutti gli a in chiamate ajax:
+
+		sfContext::getInstance()->getResponse()->addJavascript('/acMenuPagePlugin/js/ajax.js');  
+
+## Vecchi url ##
+
+Vengono gestiti dalla route ac_menu_page_old_links, per farla funzionare togliere dal file routing.yml le regole di default:
+	
+		#default_index:
+		#  url:   /:module
+		#  param: { action: index }
+		#
+		#default:
+		#  url:   /:module/:action/*	
+
+## Inizializzazione ##
+
+Nella prima riga del layout (prima dello head) chiamare la acMenuPageCurrentMenu::getInstance(),
+questa funzione trova il menu selezionato a partire dall'url e imposta il title e i meta della pagina:
+
+		<?php $current_menu = acMenuPageCurrentMenu::getInstance()?>
+
+## Lingue ##
+
+Le lingue sono definite nel file app.yml tramite il vettore "languages", l'indice di questo vettore corrisponde alla sf_culture,
+il valore è la stringa che viene visualizzata nelle pagine (può essere anche un tag img per visualizzare la bandierina)
+
+	* nel file app.yml
+    
+		languages: # elenco di lingue attive
+		  it: <img src="/images/ita.jpg" alt="Italiano">
+		  en: <img src="/images/eng.jpg" alt="English">
+
+	* componente per cambiare lingua (non cambiare il modo in cui viene generata la cache_key):
+		
+		<?php $cache_key = $current_menu ? $current_menu->getId() : 'home' ?>
+		<?php $cache_key .= '_'.$sf_request->getParameter('sf_culture') ?>
+		<?php include_component('acMenuPage', 'changeLanguage', array('sf_cache_key'=>$cache_key)) // cambio lingua ?>
+
+## Menu ##
+	
+	* componente per visualizzare il menu, bisogna passargli il root_id dell'albero da visualizzare
+	  (sono incluse due classi nel css per menu verticale e orizzontale):
+	
+  		<?php include_component('acMenuPage', 'showMenu', array('root_id'=>'principale', 'sf_cache_key'=>'principale_'.$sf_user->getCulture(), 'class'=>'menu_vertical'))  // menu verticale ?>	
+		<?php include_component('acMenuPage', 'showMenu', array('root_id'=>'secondario', 'sf_cache_key'=>'secondario_'.$sf_user->getCulture(), 'class'=>'menu_horizontal')) // menu orizzontale ?>
+
+	* componente per evidenziare (via jquery) il menu selezionato:		
+
+		<?php include_component('acMenuPage', 'selectCurrentMenu') // seleziona il menu corrente via ajax (JQuery)?>
+
+## Breadcrumb ##
+
+	* componente per il breadcrumb che può essere visualizzato solo se è stato trovato il menu selezionato
+	  (non cambiare il modo in cui viene generata la cache_key):
+
+  		<?php if ($current_menu):?>
+	  		<?php include_component('acMenuPage', 'breadcrumb', array('sf_cache_key'=>$current_menu->getId().'_'.$sf_request->getParameter('sf_culture')))?>
+	  	<?php endif?>
+

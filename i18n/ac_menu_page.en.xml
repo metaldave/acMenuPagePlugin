@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<xliff version="1.0">
+  <file orginal="global" source-language="it_IT" datatype="plaintext">
+    <body>
+    
+    
+      <trans-unit>
+        <source>ac_menu_page_breadcrumb_message</source>
+        <target>You are here:</target>
+      </trans-unit>
+
+
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,9 @@
+autoload:
+  ckeditor:
+    name:       ckeditor
+    path:       %SF_WEB_DIR%/acMenuPagePlugin/js/ckeditor
+    recursive:  on
+  ckfinder:
+    name:       ckfinder
+    path:       %SF_WEB_DIR%/acMenuPagePlugin/js/ckfinder
+    recursive:  on

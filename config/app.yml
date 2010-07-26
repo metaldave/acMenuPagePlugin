@@ -1,0 +1,25 @@
+all:
+  ckeditor:
+    basePath:         /acMenuPagePlugin/js/ckeditor/
+
+  ckfinder:
+    active:       true
+    basePath:     /acMenuPagePlugin/js/ckfinder/
+
+  ac_menu_page:
+    use_ckeditor:          true
+    breadcrumb:            true
+    breadcrumb_home_text:  Home   # E' il testo visualizzato nella prima voce del breadcrumb che punta a @homepage, mettere false se non si vuole che appaia
+    breadcrumb_separator:  '&raquo;' # la stringa che separa le voci del breadcrumb
+    culture_in_route:      true
+    jquery_url:            http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js
+    languages: # elenco di lingue attive
+      it: <img src="/images/ita.jpg" alt="Italiano">
+      en: <img src="/images/eng.jpg" alt="English">
+    routes:  # elenco di routes selezionabili nei collegmaenti dei menù (la chiave è la route compresa la @ e il valore una descrizione mnemonica)
+      @homepage:     homepage
+      @ac_news:      pagina delle news
+      @where:        pagina dove siamo
+      @ac_contacts:  pagina dei contatti
+      @products:     pagina prodotti
+        

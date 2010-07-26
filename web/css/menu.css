@@ -1,0 +1,124 @@
+@CHARSET "UTF-8";
+
+body
+{
+	/*x IE*/
+	behavior: url("/acMenuPagePlugin/css/csshover2.htc");
+}
+
+li.selected>a
+{
+	font-weight: bold;
+}
+
+/*******************  MENU VERTICALE *******************/
+
+/*Onsitus.it - menu css gratuito - esempio 12:
+Altri menu gratuiti:
+http://css.flepstudio.org/css/css-menu/
+Other free css menu:
+http://css.flepstudio.org/en/css-menu
+Credits: Se usate questo template, grazie per lasciare queste informazione o un link back è sempre il benvenuto*/
+
+.menu_vertical, .menu_vertical ul, .menu_vertical li
+{
+	padding:0;
+	margin:0;
+}
+.menu_vertical li
+{
+	list-style: none;
+	position: relative;
+	width:100px;
+}
+.menu_vertical li a
+{
+	display: block;
+	width:100px;
+	height: 23px;
+	padding:0 20px;
+	line-height: 23px;
+	border:1px solid #6D818A;
+	border-left:5px solid #6D818A;
+	background: white;
+}
+.menu_vertical li.more>a
+{
+	background: url("/acMenuPagePlugin/images/arrow.png") no-repeat right center;
+}
+
+.menu_vertical ul ul, 
+.menu_vertical ul ul ul,
+.menu_vertical ul ul ul ul,
+.menu_vertical ul ul ul ul ul,
+.menu_vertical ul ul ul ul ul ul,	
+.menu_vertical ul li:hover ul ul ul,
+.menu_vertical ul li:hover ul ul ul ul,
+.menu_vertical ul li:hover ul ul ul ul ul
+	
+{
+	position: absolute;
+	top:0;
+	left:145px;
+	visibility:hidden;
+}
+.menu_vertical ul li:hover>ul, 
+.menu_vertical ul ul li:hover>ul,
+.menu_vertical ul ul ul li:hover>ul,
+.menu_vertical ul ul ul ul li:hover>ul,
+.menu_vertical ul ul ul ul ul li:hover>ul
+{
+	visibility:visible;
+}
+
+
+
+
+/*******************  MENU ORIZZONTALE *******************/
+
+.menu_horizontal
+{
+	margin:0;
+	padding:0;
+}
+.menu_horizontal ul
+{
+	padding:0;
+	margin:0;
+}
+.menu_horizontal li
+{
+	position: relative;
+	float: left;
+	list-style: none;
+	margin: 0;
+	padding:0;
+}
+.menu_horizontal li a
+{
+	width:120px;
+	height: 30px;
+	display: block;
+	text-align: center;
+	line-height: 30px;
+	border:1px solid #6D818A;
+}
+.menu_horizontal li.more>a
+{
+	border-bottom:5px solid #6D818A;
+}
+.menu_horizontal li a:hover
+{
+	background-position: bottom center;
+}
+.menu_horizontal ul ul
+{
+	position: absolute;
+	top: 30px;
+	width: 120px;
+	visibility: hidden;
+}
+.menu_horizontal ul li:hover ul
+{
+	visibility:visible;
+}

@@ -1,0 +1,57 @@
+acMenu:
+  columns:
+    tree_name:        { type: string(255), notnull: true }
+    name:             { type: string(255), notnull: true }
+    title:            { type: string(255), notnull: false }
+    route:            { type: string(255), notnull: false }
+    page_id:          { type: integer,     notnull: false }
+    background:       { type: string(255), notnull: false }
+    visible:          { type: boolean,     default: true }
+  actAs:    
+    NestedSet:
+      hasManyRoots: true
+      rootColumnName: tree_name
+    I18n:
+      fields: [ name, title ]
+      actAs:
+        Timestampable: ~
+        Sluggable:
+          name:      ac_menu_page_slug
+          unique:    true
+          uniqueBy:  [ name, lang ]
+          fields:    [ name ]
+          canUpdate: true
+    Timestampable: ~
+  relations:
+    Page:
+      class:        acPage
+      type:         one
+      local:        page_id
+      foreign:      id
+      foreignAlias: Menus
+
+acMenuOldUrl:
+  columns:
+    url:           { type: string(255), notnull: true }
+    culture:       { type: string(2),   notnull: true }
+    menu_id:       { type: integer,     notnull: true }
+  relations:
+    Menu:
+      class:        acMenu
+      local:        menu_id
+      foreign:      id
+      foreignAlias: OldUrls
+
+acPage:
+  columns:
+    internal_name: { type: string(50), notnull: true }
+    title:         { type: string(255), notnull: true }
+    description:   { type: string(255), notnull: false }
+    keywords:      { type: string(255), notnull: false }
+    content:       { type: clob, notnull: false }
+  actAs:    
+    I18n:
+      fields: [ title, description, keywords, content ]
+      actAs:
+        Timestampable: ~  
+

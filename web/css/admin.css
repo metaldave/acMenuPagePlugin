@@ -1,0 +1,35 @@
+@CHARSET "UTF-8";
+
+#sf_admin_container ul li.sf_admin_action_addchildren a
+{
+	background: url("/acMenuPagePlugin/images/new.png") no-repeat 0px 0px;
+}
+
+#sf_admin_container ul li.sf_admin_action_moveup a
+{
+	background: url("/acMenuPagePlugin/images/up.png") no-repeat 0px 0px;
+}
+
+#sf_admin_container ul li.sf_admin_action_movedown a
+{
+	background: url("/acMenuPagePlugin/images/down.png") no-repeat 0px 0px;
+}
+
+#sf_admin_container tr.menu_root_name
+{
+	border-top: 15px solid #EEEEEE;	
+}
+
+#sf_admin_container tr.menu_root_name span.nome_menu
+{
+	font-weight: bold;
+}
+
+tr.ac_admin_menu_row td
+{
+	padding: 0px;
+}
+.hide
+{
+	visibility: hidden;
+}
